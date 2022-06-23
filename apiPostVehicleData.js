@@ -13,7 +13,7 @@ exports.apiPostVehicleData = async (req,res) => {
 
         payload = req.body;
         payload["date"] = new Date().getTime();
-        payload["entryTime"] = new Date().getHours() +":"+ new Date().getMinutes() +":"+ new Date().getSeconds()
+        payload["entryTime"] = new Date().getHours() +":"+ new Date().getMinutes()
         payload["currentStatus"] = true
         
         await exitTime(payload, findBy, res);
@@ -32,7 +32,7 @@ const checkNP = async (findBy,res) => {
             temp
         ).toArray();
         if(response.length > 0){
-            let payload = {exitTime: new Date().getHours() +":"+ new Date().getMinutes() +":"+ new Date().getSeconds(), currentStatus: false} 
+            let payload = {exitTime: new Date().getHours() +":"+ new Date().getMinutes(), currentStatus: false} 
             exitTime(payload,temp, res)
         }
         return response

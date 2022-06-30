@@ -2,6 +2,7 @@ const DATABASE = require("./connection/db_connection")
 const {DBNAME, VEHICLEDATA} = require("./constant/database")
 
 exports.apiGetVehicleData = async (req,res) => {
+    console.log("API triggered")
     try{
         let findBy = {};
 
@@ -13,11 +14,10 @@ exports.apiGetVehicleData = async (req,res) => {
        
             page = parseInt(req.query.page) || 1;
             limit = parseInt(req.query.limit) || 1;
-        
-
+    
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
-
+        
         let vehicleCountData = await client.db(DBNAME).collection(VEHICLEDATA).aggregate([
             {"$skip": startIndex },
             {"$limit": endIndex },

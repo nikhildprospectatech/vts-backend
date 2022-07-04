@@ -33,7 +33,7 @@ const checkNP = async (findBy,res) => {
             temp
         ).toArray();
         if(response.length > 0){
-            let payload = {exitTime: new Date().toLocaleTimeString('en-US', {  hour: '2-digit', minute: '2-digit', hours12 : false}), currentStatus: false} 
+            let payload = { exitDate: Math.floor(new Date().getTime() / 1000), exitTime: new Date().toLocaleTimeString('en-US', {  hour: '2-digit', minute: '2-digit', hours12 : false}), currentStatus: false} 
             exitTime(payload,temp, res)
         }
         return response

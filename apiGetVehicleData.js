@@ -2,7 +2,6 @@ const DATABASE = require("./connection/db_connection")
 const {DBNAME, VEHICLEDATA} = require("./constant/database")
 
 exports.apiGetVehicleData = async (req,res) => {
-    console.log("API triggered")
     try{
         let findBy = {};
 

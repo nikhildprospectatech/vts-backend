@@ -11,20 +11,19 @@ exports.apiRegUserdata = async (req, res) => {
     try{
      
         const { fullName, email, password } = req.body;
-
+       
         let client = await DATABASE.getClient();
 
         if(!(fullName && email && password ) ){
             return res.status(400).send("All inputs are required")
         }
 
-        
         const oldUser = await client.db(DBNAME).collection(USERDATA).findOne(
             { email }
         )
 
         if(oldUser){
-            return res.status(400).send("user already exist, please login");
+            return res.status(200).send( { message : "user already exist, please login", success : false});
         }
 
         encryptedPassword = await bcrypt.hash(password, 10);
@@ -45,7 +44,8 @@ exports.apiRegUserdata = async (req, res) => {
         res.status(200).send( 
                 {
                     email,
-                    token : token
+                    token : token,
+                    success : true
                 }
              )
 

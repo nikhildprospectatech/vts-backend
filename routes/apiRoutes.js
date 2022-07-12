@@ -17,7 +17,7 @@ router.get('/getVehicleData', apiGetVehicleData);
 
 router.post('/apiRegUserdata', apiRegUserdata);
 
-router.post('/login', login);
+router.get('/login', login);
 
 router.get('/getUser', getUser)
 

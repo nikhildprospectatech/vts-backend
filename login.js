@@ -6,7 +6,7 @@ exports.login = async (req, res) => {
     console.log("login API triggered")
 
     try {
-        const { email, password } = req.body;
+        const { email, password } = req.query;
 
         if (!(email && password)) {
             res.status(400).send("username and password is required")
@@ -30,10 +30,18 @@ exports.login = async (req, res) => {
                 }
             )
 
-            res.status(200).send(token)
+            res.status(200).send({
+                email,
+                token,
+                success : true
+            })
 
         } 
-            res.status(400).send("Invalid credentials")
+            res.status(200).send({
+                success: false,
+                msg :"Invalid credentials"
+            }
+        )
 
     } catch (err) {
         throw new Error(err.toString())

@@ -7,6 +7,7 @@ const { getUser } = require("../apiGetUser");
 const {apiGetVehicleData} = require('../apiGetVehicleData');
 const {apiPostVehicleData} = require('../apiPostVehicleData');
 const { apiRegUserdata } = require('../apiRegUser');
+const { forgotPass } = require("../forgotPass");
 const { login } = require("../login");
 const { verifyToken } = require('../middleware/auth')
 
@@ -20,5 +21,7 @@ router.post('/apiRegUserdata', apiRegUserdata);
 router.get('/login', login);
 
 router.get('/getUser', getUser)
+
+router.post('/forgotPass', forgotPass)
 
 module.exports = router;

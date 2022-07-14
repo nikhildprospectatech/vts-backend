@@ -21,7 +21,7 @@ exports.sendEmailNotification = async (obj) => {
             from: `"VTS " <${process.env.EMAIL_ADDRESS}>`,
             to:  `${obj.email}`, 
             subject: "Reset password",
-            html: "<html> <body><div> Click on the below link to reset your password</div> <diV>sdsds</div> </body></html>", 
+            html: `<html> <body><div> Click on the below link to reset your password</div> <diV>${process.env.URL}?email=${obj.email}</div> </body></html>`, 
           });
 
           return info;

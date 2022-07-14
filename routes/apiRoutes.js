@@ -9,7 +9,8 @@ const {apiPostVehicleData} = require('../apiPostVehicleData');
 const { apiRegUserdata } = require('../apiRegUser');
 const { forgotPass } = require("../forgotPass");
 const { login } = require("../login");
-const { verifyToken } = require('../middleware/auth')
+const { verifyToken } = require('../middleware/auth');
+const { resetPass } = require("../resetPassword");
 
 router.get("/apiGetCurrentVehicles", apiGetCurrentVehicles);
 
@@ -23,5 +24,7 @@ router.get('/login', login);
 router.get('/getUser', getUser)
 
 router.post('/forgotPass', forgotPass)
+
+router.post('/passwordReset', resetPass)
 
 module.exports = router;

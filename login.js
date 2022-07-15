@@ -30,7 +30,7 @@ exports.login = async (req, res) => {
                 }
             )
 
-            res.status(200).send({
+            return res.status(200).send({
                 email,
                 token,
                 success : true

@@ -1,5 +1,5 @@
 const database = require('./connection/db_connection');
-const { DBNAME, NOTIFICATIONS} = require('./constant/database');
+const { DBNAME, NOTIFICATIONS, USERDATA} = require('./constant/database');
 const { sendEmailNotification } = require('./emailNotification');
 exports.forgotPass = async (req, res) =>{
     console.log("forgot password triggered")
@@ -14,6 +14,12 @@ exports.forgotPass = async (req, res) =>{
         }
         let obj = {
             email : forgotPass
+        }
+
+        let doseNotExist = await client.db(DBNAME).collection(USERDATA).findOne(obj);
+
+        if(!doseNotExist){
+            return res.status(200).send({msg :"email dose not exist please register"})
         }
         await sendEmailNotification(obj);
 

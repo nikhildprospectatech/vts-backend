@@ -1,5 +1,6 @@
 const express = require("express");
 const { apiCheckInData } = require("../apiCheckIn");
+const { apiCheckOutData } = require("../apiCheckOut");
 
 var router = express.Router();
 
@@ -29,5 +30,7 @@ router.post('/forgotPass', forgotPass)
 router.post('/passwordReset', resetPass)
 
 router.post('/apiCheckinVehicle', apiCheckInData)
+
+router.post('/apiCheckOutVehicle/', apiCheckOutData)
 
 module.exports = router;

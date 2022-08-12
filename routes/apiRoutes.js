@@ -10,6 +10,7 @@ const {apiGetVehicleData} = require('../apiGetVehicleData');
 const {apiPostVehicleData} = require('../apiPostVehicleData');
 const { apiRegUserdata } = require('../apiRegUser');
 const { forgotPass } = require("../forgotPass");
+const { getDashboardData } = require("../getDashboardData");
 const { login } = require("../login");
 const { verifyToken } = require('../middleware/auth');
 const { resetPass } = require("../resetPassword");
@@ -32,5 +33,7 @@ router.post('/passwordReset', resetPass)
 router.post('/apiCheckinVehicle', apiCheckInData)
 
 router.post('/apiCheckOutVehicle/', apiCheckOutData)
+
+router.get('/dashboard', getDashboardData)
 
 module.exports = router;

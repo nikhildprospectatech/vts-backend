@@ -38,6 +38,7 @@ const insertVehicle = async (payload, res ) => {
         payload['vehicleId'] =await generateReqId();
         payload['vehicleCategory'] = "";
         payload["date"] = Math.floor(new Date().getTime() / 1000);
+        console.log(payload['date'])
         payload["entryTime"] = new Date().toLocaleTimeString('en-US', {  hour: '2-digit', minute: '2-digit', hours12 : true});
         payload["currentStatus"] = true
 
